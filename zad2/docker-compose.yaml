@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+    todo-db:
+        image: diamol/postgres:11.5
+        container_name: todo-db
+        restart: always
+        volumes:
+            - ./data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: todo
+            POSTGRES_PASSWORD: todo
+            POSTGRES_DB: todo
+    todo-app:
+        image: diamol/ch06-todo-list
+        container_name: todo-app
+        restart: always
+        ports:
+            - 80:80
+        environment:
+            DB_HOST: todo-db
+            DB_USER: todo
+            DB_PASSWORD: todo
+            DB_NAME: todo
+volumes:
+    todo-db-data:
+
