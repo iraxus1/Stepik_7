@@ -15,7 +15,7 @@ services:
         container_name: todo-app
         restart: always
         ports:
-            - 80:80
+            - "80:80"
         environment:
             DB_HOST: todo-db
             DB_USER: todo
